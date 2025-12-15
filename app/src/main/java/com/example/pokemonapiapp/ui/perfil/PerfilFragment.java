@@ -89,7 +89,7 @@ public class PerfilFragment extends Fragment {
         input.setHint("Nueva contraseña");
 
         new AlertDialog.Builder(requireContext())
-                .setTitle("Cambiar pass de " + usuario.nombreUsuario)
+                .setTitle("Cambiar contraseña de " + usuario.nombreUsuario)
                 .setView(input)
                 .setPositiveButton("Guardar", (dialog, which) -> {
                     String newPass = input.getText().toString();

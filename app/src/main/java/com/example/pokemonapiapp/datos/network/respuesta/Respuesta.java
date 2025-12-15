@@ -16,8 +16,14 @@ public class Respuesta {
     @SerializedName("id")
     private int id;
 
-    @SerializedName("base_experience")
-    private int baseExperience;
+    @SerializedName("weight")
+    private int weight; // Viene en hectogramos
+
+    @SerializedName("height")
+    private int height; // Viene en decímetros
+
+    @SerializedName("stats")
+    private List<StatSlot> stats;
 
 
     public String getName() { return name; }
@@ -25,7 +31,9 @@ public class Respuesta {
     public Sprites getSprites() { return sprites; }
 
     public int getId() { return id; }
-    public int getBaseExperience() { return baseExperience; }
+    public int getWeight() { return weight; }
+    public int getHeight() { return height; }
+    public List<StatSlot> getStats() { return stats; }
 
 
     public static class TypeSlot {
@@ -51,5 +59,18 @@ public class Respuesta {
     public static class OfficialArtwork {
         @SerializedName("front_default")
         public String frontDefault;
+    }
+
+    public static class StatSlot {
+        @SerializedName("base_stat")
+        public int baseStat;
+
+        @SerializedName("stat")
+        public StatObj stat;
+    }
+
+    public static class StatObj {
+        @SerializedName("name")
+        public String name;
     }
 }

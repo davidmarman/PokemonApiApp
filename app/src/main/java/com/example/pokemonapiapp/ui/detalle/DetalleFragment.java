@@ -50,12 +50,18 @@ public class DetalleFragment extends Fragment {
                 binding.progressBar.setVisibility(View.GONE);
                 binding.groupContent.setVisibility(View.VISIBLE);
 
+                int poder = pokemon.getStats().get(0).baseStat;
+                double alturaM = pokemon.getHeight() / 10.0;
+                double pesoKg = pokemon.getWeight() / 10.0;
+
                 // Llenar datos
                 binding.tvDetailName.setText(pokemon.getName());
                 String tipoStr = pokemon.getTypes().get(0).type.name; // Guardamos el tipo
                 binding.tvDetailType.setText("Tipo: " + tipoStr.toUpperCase());
-                binding.tvDetailPower.setText("Poder Base: " + pokemon.getBaseExperience());
+                binding.tvDetailPower.setText("Poder Base: " + poder);
                 binding.tvDetailId.setText("ID Pokedex: #" + pokemon.getId());
+                binding.tvDetailHeight.setText("Altura: " + alturaM + " m");
+                binding.tvDetailWeight.setText("Peso: "+ pesoKg + " Kg");
 
                 // Cargar imagen
                 Glide.with(DetalleFragment.this)

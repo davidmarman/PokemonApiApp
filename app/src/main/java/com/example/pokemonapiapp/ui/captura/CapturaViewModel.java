@@ -49,7 +49,7 @@ public class CapturaViewModel extends AndroidViewModel {
 
         // comparar poder
         int miPoder = repository.obtenerPoderTotal(userId);
-        int poderSalvaje = pokemon.getBaseExperience();
+        int poderSalvaje = pokemon.getStats().get(0).baseStat;
 
         if (miPoder > poderSalvaje) {
             estadoCaptura.setValue("CAPTURABLE");
@@ -65,13 +65,14 @@ public class CapturaViewModel extends AndroidViewModel {
         if (p != null) {
             String imagen = p.getSprites().other.officialArtwork.frontDefault;
             String tipo = p.getTypes().get(0).type.name;
+            int poderReal = p.getStats().get(0).baseStat;
 
             PokemonEntity nuevo = new PokemonEntity(
                     p.getId(),
                     p.getName(),
                     tipo,
                     imagen,
-                    p.getBaseExperience(),
+                    poderReal,
                     userId
             );
 

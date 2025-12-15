@@ -14,14 +14,14 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layoutTopBackground"
             android:layout_width="match_parent"
-            android:layout_height="500dp"
+            android:layout_height="600dp"
             android:background="@drawable/gradient_normal"
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
                 android:id="@+id/ivDetailImage"
-                android:layout_width="350dp"
-                android:layout_height="350dp"
+                android:layout_width="400dp"
+                android:layout_height="400dp"
                 android:scaleType="fitCenter"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -38,7 +38,7 @@
             android:layout_marginTop="-100dp"
             app:cardBackgroundColor="@android:color/white"
             app:cardCornerRadius="32dp"
-            app:cardElevation="16dp"
+            app:cardElevation="54dp"
             app:layout_constraintTop_toBottomOf="@id/layoutTopBackground"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintVertical_bias="0.0">
@@ -68,19 +68,13 @@
                     android:orientation="vertical"
                     android:padding="24dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Datos de la API"
-                        android:textStyle="bold"
-                        android:textColor="#757575"
-                        android:layout_marginBottom="16dp"/>
+
 
                     <TextView
                         android:id="@+id/tvDetailType"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="18sp"
+                        android:textSize="32sp"
                         tools:text="Tipo: Electric" />
 
                     <TextView
@@ -88,7 +82,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
-                        android:textSize="18sp"
+                        android:textSize="32sp"
                         tools:text="Experiencia Base: 112" />
 
                     <TextView
@@ -96,8 +90,30 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
-                        android:textSize="18sp"
+                        android:textSize="32sp"
                         tools:text="ID Pokedex: #25" />
+
+                    <TextView
+                        android:id="@+id/tvDetailHeight"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Altura: --"
+                        android:textSize="32sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvDetailPower" />
+
+                    <TextView
+                        android:id="@+id/tvDetailWeight"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Peso: --"
+                        android:textSize="32sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvDetailHeight" />
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -107,7 +123,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:elevation="20dp"
-            android:visibility="invisible"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -117,7 +133,7 @@
             android:id="@+id/groupContent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="gone"
+            android:visibility="visible"
             app:constraint_referenced_ids="layoutTopBackground,cardInfo" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

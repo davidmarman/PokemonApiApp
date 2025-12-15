@@ -152,7 +152,7 @@ public class CapturaFragment extends Fragment {
 
         // Pintar datos
         binding.tvWildName.setText(pokemonPendiente.getName());
-        binding.tvWildPower.setText("Poder: " + pokemonPendiente.getBaseExperience());
+        binding.tvWildPower.setText("Poder: " + pokemonPendiente.getStats().get(0).baseStat);
         Glide.with(this).load(pokemonPendiente.getSprites().other.officialArtwork.frontDefault).into(binding.ivWildImage);
 
 
