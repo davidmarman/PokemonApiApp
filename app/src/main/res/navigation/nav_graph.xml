@@ -3,11 +3,46 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/listaPokemonFr">
+    app:startDestination="@id/loginFragment">
 
     <fragment
-        android:id="@+id/listaPokemonFr"
-        android:name="com.example.pokemonapiapp.ListaPokemonFr"
-        android:label="fragment_lista_pokemon"
-        tools:layout="@layout/fragment_lista_pokemon" />
+        android:id="@+id/loginFragment"
+        android:name="com.example.pokemonapiapp.ui.login.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_listaPokemonFragment"
+            app:destination="@id/listaPokemonFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/listaPokemonFragment"
+        android:name="com.example.pokemonapiapp.ui.lista.ListaPokemonFragment"
+        android:label="fragment_lista_pokemon2"
+        tools:layout="@layout/fragment_lista_pokemon" >
+        <action
+            android:id="@+id/action_listaPokemonFragment_to_capturaFragment"
+            app:destination="@id/capturaFragment" />
+        <action
+            android:id="@+id/action_listaPokemonFragment_to_detalleFragment"
+            app:destination="@id/detalleFragment" />
+        <action
+            android:id="@+id/action_listaPokemonFragment_to_perfilFragment"
+            app:destination="@id/perfilFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/capturaFragment"
+        android:name="com.example.pokemonapiapp.ui.captura.CapturaFragment"
+        android:label="fragment_captura"
+        tools:layout="@layout/fragment_captura" />
+    <fragment
+        android:id="@+id/detalleFragment"
+        android:name="com.example.pokemonapiapp.ui.detalle.DetalleFragment"
+        android:label="fragment_detalle"
+        tools:layout="@layout/fragment_detalle" />
+    <fragment
+        android:id="@+id/perfilFragment"
+        android:name="com.example.pokemonapiapp.ui.perfil.PerfilFragment"
+        android:label="fragment_perfil"
+        tools:layout="@layout/fragment_perfil" />
+    <action android:id="@+id/action_global_loginFragment" app:destination="@id/loginFragment" />
 </navigation>
