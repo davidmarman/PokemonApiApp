@@ -34,6 +34,8 @@ public class DetalleFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         viewModel = new ViewModelProvider(this).get(DetalleViewModel.class);
 
+
+
         // recibimos el id del pokemon pasado en el bundle
         if (getArguments() != null) {
             int apiId = getArguments().getInt("pokemon_api_id");
@@ -49,6 +51,7 @@ public class DetalleFragment extends Fragment {
                 // Ocultar carga y mostrar contenido
                 binding.progressBar.setVisibility(View.GONE);
                 binding.groupContent.setVisibility(View.VISIBLE);
+                binding.layoutErrorState.setVisibility(View.GONE);
 
                 int poder = pokemon.getStats().get(0).baseStat;
                 double alturaM = pokemon.getHeight() / 10.0;
@@ -71,61 +74,61 @@ public class DetalleFragment extends Fragment {
                 // Switch para el fondo de color
                 switch (tipoStr.toLowerCase()) {
                     case "normal":
-                        binding.layoutTopBackground.setBackgroundResource(R.drawable.gradient_normal);
+                        binding.rootLayout.setBackgroundResource(R.drawable.gradient_normal);
                         break;
                     case "fire":
-                        binding.layoutTopBackground.setBackgroundResource(R.drawable.gradient_fire);
+                        binding.rootLayout.setBackgroundResource(R.drawable.gradient_fire);
                         break;
                     case "water":
-                        binding.layoutTopBackground.setBackgroundResource(R.drawable.gradient_water);
+                        binding.rootLayout.setBackgroundResource(R.drawable.gradient_water);
                         break;
                     case "electric":
-                        binding.layoutTopBackground.setBackgroundResource(R.drawable.gradient_electric);
+                        binding.rootLayout.setBackgroundResource(R.drawable.gradient_electric);
                         break;
                     case "grass":
-                        binding.layoutTopBackground.setBackgroundResource(R.drawable.gradient_grass);
+                        binding.rootLayout.setBackgroundResource(R.drawable.gradient_grass);
                         break;
                     case "ice":
-                        binding.layoutTopBackground.setBackgroundResource(R.drawable.gradient_ice);
+                        binding.rootLayout.setBackgroundResource(R.drawable.gradient_ice);
                         break;
                     case "fighting":
-                        binding.layoutTopBackground.setBackgroundResource(R.drawable.gradient_fighting);
+                        binding.rootLayout.setBackgroundResource(R.drawable.gradient_fighting);
                         break;
                     case "poison":
-                        binding.layoutTopBackground.setBackgroundResource(R.drawable.gradient_poison);
+                        binding.rootLayout.setBackgroundResource(R.drawable.gradient_poison);
                         break;
                     case "ground":
-                        binding.layoutTopBackground.setBackgroundResource(R.drawable.gradient_ground);
+                        binding.rootLayout.setBackgroundResource(R.drawable.gradient_ground);
                         break;
                     case "flying":
-                        binding.layoutTopBackground.setBackgroundResource(R.drawable.gradient_flying);
+                        binding.rootLayout.setBackgroundResource(R.drawable.gradient_flying);
                         break;
                     case "psychic":
-                        binding.layoutTopBackground.setBackgroundResource(R.drawable.gradient_psychic);
+                        binding.rootLayout.setBackgroundResource(R.drawable.gradient_psychic);
                         break;
                     case "bug":
-                        binding.layoutTopBackground.setBackgroundResource(R.drawable.gradient_bug);
+                        binding.rootLayout.setBackgroundResource(R.drawable.gradient_bug);
                         break;
                     case "rock":
-                        binding.layoutTopBackground.setBackgroundResource(R.drawable.gradient_rock);
+                        binding.rootLayout.setBackgroundResource(R.drawable.gradient_rock);
                         break;
                     case "ghost":
-                        binding.layoutTopBackground.setBackgroundResource(R.drawable.gradient_ghost);
+                        binding.rootLayout.setBackgroundResource(R.drawable.gradient_ghost);
                         break;
                     case "dragon":
-                        binding.layoutTopBackground.setBackgroundResource(R.drawable.gradient_dragon);
+                        binding.rootLayout.setBackgroundResource(R.drawable.gradient_dragon);
                         break;
                     case "steel":
-                        binding.layoutTopBackground.setBackgroundResource(R.drawable.gradient_steel);
+                        binding.rootLayout.setBackgroundResource(R.drawable.gradient_steel);
                         break;
                     case "dark":
-                        binding.layoutTopBackground.setBackgroundResource(R.drawable.gradient_dark);
+                        binding.rootLayout.setBackgroundResource(R.drawable.gradient_dark);
                         break;
                     case "fairy":
-                        binding.layoutTopBackground.setBackgroundResource(R.drawable.gradient_fairy);
+                        binding.rootLayout.setBackgroundResource(R.drawable.gradient_fairy);
                         break;
                     default:
-                        binding.layoutTopBackground.setBackgroundResource(R.drawable.gradient_normal);
+                        binding.rootLayout.setBackgroundResource(R.drawable.gradient_normal);
                         break;
                 }
             }
@@ -135,8 +138,14 @@ public class DetalleFragment extends Fragment {
         viewModel.error.observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String msg) {
-
+                binding.groupContent.setVisibility(View.GONE);
                 binding.progressBar.setVisibility(View.GONE);
+                binding.layoutErrorState.setVisibility(View.VISIBLE);
+                //Cargamos la imagen del psyduck en fondo blanco
+                binding.rootLayout.setBackgroundResource(android.R.color.white);
+                Glide.with(DetalleFragment.this).load(R.drawable.psyduck).circleCrop().into(binding.ivErrorImage);
+
+
                 Toast.makeText(requireContext(), "Error: " + msg, Toast.LENGTH_SHORT).show();
             }
         });
